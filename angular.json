@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ngx-belle-catalog": {
+      "projectType": "library",
+      "root": "projects/ngx-belle-catalog",
+      "sourceRoot": "projects/ngx-belle-catalog/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-belle-catalog/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-belle-catalog/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-belle-catalog/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-belle-catalog/src/test.ts",
+            "tsConfig": "projects/ngx-belle-catalog/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-belle-catalog/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-belle-catalog"
 }

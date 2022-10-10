@@ -1,0 +1,23 @@
+<div id="image-browser" class="browser" aria-label="Image Browser">
+    <span id="interaction-browser" class="interaction-browser">
+        <button id="browse-image-left" class="browse" (click)="browseImage(-1)" aria-label="Previous Image">&lt;</button>
+        <img class="product-image" src={{displayedImage.source}} alt={{displayedImage.altText}} [attr.aria-label]="displayedImage.altText"/>
+        <button id="browse-image-right" class="browse" (click)="browseImage(1)" aria-label="Next Image">&gt;</button>
+    </span>
+    <span id="image-summary" class="image-summary">
+        <button id="main-image" (click)="setIndexedImage(-1)">
+            <ng-container *ngTemplateOutlet="imageButton"></ng-container>
+        </button>
+        <ng-template ngFor [ngForOf]="images" let-i="index">
+            <button id="image-{{i}}" class="image-button" (click)="setIndexedImage(i)">
+                <ng-container *ngTemplateOutlet="imageButton"></ng-container>
+            </button>
+        </ng-template>
+    </span>
+</div>
+
+<ng-template #imageButton>
+    <svg>
+        <circle cx="50" cy="50" r="50"/>
+    </svg>
+</ng-template>
